@@ -7,8 +7,8 @@ interface ReminderListProps {
 
 const RemindersList = ({ reminders } : ReminderListProps) => {
   return (
-    <ul>
-        {reminders.map(reminder => <li key={reminder.id}>{reminder.title}</li>)}
+    <ul className="list-group">
+        {reminders.map(reminder => <li className="list-group-item" key={reminder.id}>{reminder.title}</li>)}
     </ul>
   )
 }
