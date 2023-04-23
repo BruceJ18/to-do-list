@@ -8,11 +8,18 @@ interface Props {
 const ReminderForm = ({ onAddReminder } : Props): JSX.Element => {
     const [title, setTitle] = useState('');
 
+    const submitForm = (event: React.FormEvent) => {
+        event.preventDefault;
+        if (!title) return;
+        onAddReminder(title);
+        setTitle('');
+    }
+
   return (
-    <form>
+    <form onSubmit={submitForm}>
       <label htmlFor="title"></label>
       <input value={title} onChange={event => setTitle(event.target.value)} id="title" type="text" className="form-control" />
-      <button onSubmit={() => onAddReminder(title)} type="submit" className="btn btn-primary my-3 rounded-pill">Add Reminder</button>
+      <button type="submit" className="btn btn-primary my-3 rounded-pill">Add Reminder</button>
     </form>
   );
 };
