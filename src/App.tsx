@@ -3,6 +3,7 @@ import './App.css';
 import RemindersList from './components/RemindersList';
 import Reminder from './models/reminderModel';
 import reminderServices from './services/apiClient';
+import ReminderForm from './components/ReminderForm';
 
 
 function App() {
@@ -22,11 +23,15 @@ function App() {
 
   const removeReminder = (id: number) => {
       setReminders(reminders.filter(reminder => reminder.id !== id) );
+  }
 
+  const addReminder = (title: string) => {
+    reminderServices.addReminder(title);
   }
 
   return (
     <div className="App">
+      <ReminderForm onAddReminder={addReminder}/>
       <RemindersList onRemoveReminder={removeReminder} reminders={reminders}></RemindersList>
     </div>
   );
